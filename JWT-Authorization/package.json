@@ -1,0 +1,32 @@
+{
+  "name": "jwt-authorization",
+  "version": "1.0.0",
+  "description": "разберем всю теорию связанную с JWT авторизацией и реализуем JWT access, refresh авторизацию на node js и react. Также реализуем подтверждение почты. Активация почты на node js.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "npm start --prefix client",
+    "client:init": "yarn create react-app client",
+    "client:init:ts": "yarn create react-app client --template typescript",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "Ulbi TV",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.2.10",
+    "uuid": "^8.3.2"
+  }
+}
