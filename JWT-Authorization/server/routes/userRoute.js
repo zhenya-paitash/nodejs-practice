@@ -1,12 +1,19 @@
 const router = require('express').Router()
 const userController = require('../controllers/userController')
+const { body } = require('express-validator')
 
 // GET
-router.route('/').get(userController.getUsers)
 router.route('/activate/:link').get(userController.activate)
 router.route('/refresh').get(userController.refresh)
+router.route('/').get(userController.getUsers)
 // POST
-router.route('/registration').post(userController.registration)
+router
+  .route('/registration')
+  .post(
+    body('email').isEmail(),
+    body('password').isLength({ min: 3, max: 32 }),
+    userController.registration
+  )
 router.route('/login').post(userController.login)
 router.route('/logout').post(userController.logout)
 

@@ -16,5 +16,8 @@ app.use(cors())
 // ROUTES
 app.use('/api/user', require('./routes/userRoute'))
 
+// ERRORS
+app.use(require('./middlewares/errorMiddleware'))
+
 // SERVER
 app.listen(PORT, () => console.log(`Server run on port: ${PORT}`))
