@@ -3,18 +3,19 @@ const ApiError = require('../exceptions/apiError')
 const { validationResult } = require('express-validator')
 
 class UserController {
-  // @desc      Logout
+  // @desc      Get all users
   // @route     GET /api/user/
   // @access    Public
   async getUsers(req, res, next) {
     try {
-      res.status(200).json({ message: 'GET USER' })
+      const users = await userService.getAllUsers()
+      return res.status(200).json(users)
     } catch (err) {
       next(err)
     }
   }
 
-  // @desc      Logout
+  // @desc      Activate user account
   // @route     GET /api/user/activate/:link
   // @access    Public
   async activate(req, res, next) {
@@ -27,12 +28,18 @@ class UserController {
     }
   }
 
-  // @desc      Logout
+  // @desc      Refresh token
   // @route     GET /api/user/refresh
   // @access    Public
   async refresh(req, res, next) {
     try {
-      res.status(200).json({ message: 'REFRESH LOGIN' })
+      const { refreshToken } = req.cookies
+      const userData = await userService.refresh(refreshToken)
+      res.cookie('refreshToken', userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      })
+      return res.status(200).json(userData)
     } catch (err) {
       next(err)
     }
@@ -53,7 +60,6 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
         httpOnly: true,
-        // secure: true,  // if https
       })
       return res.status(201).json(userData)
     } catch (err) {
@@ -84,7 +90,10 @@ class UserController {
   // @access    Public
   async logout(req, res, next) {
     try {
-      res.status(200).json({ message: 'LOGOUT' })
+      const { refreshToken } = req.cookies
+      const token = await userService.logout(refreshToken)
+      res.clearCookie('refreshToken')
+      return res.status(200).json(token)
     } catch (err) {
       next(err)
     }

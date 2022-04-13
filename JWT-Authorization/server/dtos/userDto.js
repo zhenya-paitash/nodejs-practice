@@ -3,9 +3,9 @@ module.exports = class UserDto {
   id
   isActivated
 
-  constructor({ email, _id, isActivated }) {
-    this.email = email
-    this.id = _id
-    this.isActivated = isActivated
+  constructor(user) {
+    this.email = user.email
+    this.id = user._id
+    this.isActivated = user.isActivated
   }
 }

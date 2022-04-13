@@ -1,11 +1,12 @@
 const router = require('express').Router()
 const userController = require('../controllers/userController')
 const { body } = require('express-validator')
+const authMiddleware = require('../middlewares/authMiddleware')
 
 // GET
 router.route('/activate/:link').get(userController.activate)
 router.route('/refresh').get(userController.refresh)
-router.route('/').get(userController.getUsers)
+router.route('/').get(authMiddleware, userController.getUsers)
 // POST
 router
   .route('/registration')
