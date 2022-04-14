@@ -7,8 +7,7 @@
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "client": "npm start --prefix client",
-    "client:init": "yarn create react-app client",
-    "client:init:ts": "yarn create react-app client --template typescript",
+    "client:init": "npx create-react-app client --template typescript",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
