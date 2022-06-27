@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const { env, database } = require('./config')
+const { notFound, errHandler } = require('./middlewares/errorMiddleware')
 require('colors')
 
 // CONFIG
@@ -16,11 +17,12 @@ app.use(
 )
 app.use(express.json())
 
-//ROUTES
-app.use('/api', require('./routes/chatRoute'))
+//ROUTE
+app.use('/api/auth', require('./routes/userRoute'))
 
 // ERROR
-app.use(require('./middlewares/errorMiddleware'))
+app.use(notFound)
+app.use(errHandler)
 
 // SERVER
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`.cyan))

@@ -23,7 +23,7 @@ module.exports = class ApiError extends Error {
   // @desc      доступ к конечной точке не разрешен
   // @status    403
   static Forbidden() {
-    return new ApiError(403, '🛡️ Not access')
+    return new ApiError(403, '🛡️ No access')
   }
 
   // @desc      конечную точку невозможно обнаружить
