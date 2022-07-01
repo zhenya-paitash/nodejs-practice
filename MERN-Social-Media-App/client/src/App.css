@@ -27,7 +27,7 @@
   height: 14rem;
   border-radius: 50%;
   background: #a6ddf0;
-  filter: blur(72px);
+  filter: blur(124px);
 }
 
 .btn {
@@ -50,4 +50,15 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+
+/* ====================
+MEDIA
+==================== */
+@media (min-width: 1920px) {
+  .App {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
 }

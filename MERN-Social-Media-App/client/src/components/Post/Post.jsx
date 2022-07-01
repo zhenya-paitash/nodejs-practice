@@ -17,7 +17,9 @@ const Post = ({ post }) => {
         <img src={ShareImg} alt='share' />
       </div>
 
-      <span>{likes} likes</span>
+      <span style={{ color: 'var(--gray)', fontSize: '12px' }}>
+        {likes} likes
+      </span>
 
       <div className='details'>
         <span>
