@@ -4,7 +4,7 @@ import HeartImg from '../../img/like.png'
 import NotLikeImg from '../../img/notlike.png'
 import './Post.css'
 
-const Post = ({ post, key }) => {
+const Post = ({ post }) => {
   const { img, name, desc, likes, liked } = post
 
   return (
