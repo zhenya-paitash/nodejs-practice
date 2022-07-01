@@ -4,3 +4,22 @@
   grid-template-columns: 18rem auto 20rem;
   gap: 1rem;
 }
+
+
+/* ====================
+MEDIA
+==================== */
+@media (max-width: 1200px) {
+  .Home {
+    grid-template-columns: 18rem auto;
+  }
+}
+@media (max-width: 870px) {
+  .PostShare .option p {
+    display: none;
+  }
+}@media (max-width: 700px) {
+  .Home {
+    grid-template-columns: auto;
+  }
+}
