@@ -1,0 +1,5 @@
+export const TEXT = 'text'
+export const VOICE = 'voice'
+export const PHOTO = 'photo'
+export const STICKER = 'sticker'
+export const DOCUMENT = 'document'
