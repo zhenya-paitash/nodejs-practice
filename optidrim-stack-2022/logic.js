@@ -1,12 +1,23 @@
-import { PARSING_FILMS } from './commands.js'
+import { START, HELP, PARSING } from './commands.js'
 import { parsingBtn } from './btn.js'
+
+function botConfig(bot) {
+  bot.setMyCommands([
+    { command: START, description: 'Приветствие' },
+    { command: HELP, description: 'Помощь' },
+    { command: PARSING, description: 'Парсинг' },
+  ])
+}
 
 function onText(bot, data) {
   switch (data.text) {
-    case PARSING_FILMS:
-      return bot.sendMessage(data.chat.id, 'Фильмы или Сериалы?', parsingBtn)
-    default:
-      bot.sendMessage(data.chat.id, 'ON TEXT')
+    case HELP:
+      return bot.sendMessage(data.chat.id, 'Приветствую. Бот только для тестов')
+    case START:
+    case PARSING:
+      return bot.sendMessage(data.chat.id, 'Выберите категорию', parsingBtn)
+    // default:
+    //   bot.sendMessage(data.chat.id, 'ON TEXT')
   }
 }
 
@@ -23,4 +34,4 @@ function onDocument(bot, data) {
   bot.sendMessage(data.chat.id, 'ON DOCUMENT')
 }
 
-export { onText, onVoice, onPhoto, onSticker, onDocument }
+export { onText, onVoice, onPhoto, onSticker, onDocument, botConfig }
