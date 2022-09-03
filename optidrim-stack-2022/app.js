@@ -37,8 +37,8 @@ bot.on('message', (msg, { type }) => {
     //   return onPhoto(bot, msg)
     // case STICKER:
     //   return onSticker(bot, msg)
-    // case DOCUMENT:
-    //   return onDocument(bot, msg)
+    case DOCUMENT:
+      return onDocument(bot, msg)
     default:
       bot.sendSticker(msg.chat.id, ERR_STICKER)
   }

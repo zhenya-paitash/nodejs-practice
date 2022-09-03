@@ -10,6 +10,17 @@ export const parsingBtn = {
   }),
 }
 
+export const startBtn = {
+  reply_markup: JSON.stringify({
+    keyboard: [
+      [
+        { text: 'Фильмы', callback_data: 'film' },
+        { text: 'Сериалы', callback_data: 'series' },
+      ],
+    ],
+  }),
+}
+
 export const createDataBtn = data => {
   return JSON.stringify({
     inline_keyboard: [

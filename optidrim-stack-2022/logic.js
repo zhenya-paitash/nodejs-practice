@@ -1,5 +1,5 @@
 import { START, HELP, PARSING } from './commands.js'
-import { parsingBtn } from './btn.js'
+import { parsingBtn, startBtn } from './btn.js'
 
 function botConfig(bot) {
   bot.setMyCommands([
@@ -14,6 +14,7 @@ function onText(bot, data) {
     case HELP:
       return bot.sendMessage(data.chat.id, 'Приветствую. Бот только для тестов')
     case START:
+      // bot.sendMessage(data.chat.id, 'Welcome! 😀🤚', startBtn)
     case PARSING:
       return bot.sendMessage(data.chat.id, 'Выберите категорию', parsingBtn)
     // default:
@@ -22,16 +23,16 @@ function onText(bot, data) {
 }
 
 function onVoice(bot, data) {
-  bot.sendMessage(data.chat.id, 'ON VOICE')
+  // bot.sendMessage(data.chat.id, 'ON VOICE')
 }
 function onPhoto(bot, data) {
-  bot.sendMessage(data.chat.id, 'ON PHOTO')
+  // bot.sendMessage(data.chat.id, 'ON PHOTO')
 }
 function onSticker(bot, data) {
-  bot.sendMessage(data.chat.id, 'ON STICKER')
+  // bot.sendMessage(data.chat.id, 'ON STICKER')
 }
 function onDocument(bot, data) {
-  bot.sendMessage(data.chat.id, 'ON DOCUMENT')
+  // bot.sendMessage(data.chat.id, 'ON DOCUMENT')
 }
 
 export { onText, onVoice, onPhoto, onSticker, onDocument, botConfig }
